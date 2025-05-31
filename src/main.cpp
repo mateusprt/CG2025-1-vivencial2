@@ -169,9 +169,9 @@ int main()
 	int imgWidth, imgHeight;
 	GLuint texID = loadTexture("../assets/tex/pixelWall.png",imgWidth,imgHeight);
 
-	float ka = 0.1, kd  =0.5, ks = 0.5, q = 10.0;
+	float ka = 0.1, kd = 0.5, ks = 0.5, q = 10.0;
 	vec3 lightPos = vec3(0.6, 1.2, -0.5);
-	vec3 camPos = vec3(1.5,0.0,10.0);
+	vec3 camPos = vec3(1.5, 0.0, 10.0);
 
 	glUseProgram(shaderID);
 
@@ -182,8 +182,8 @@ int main()
 	glUniform1f(glGetUniformLocation(shaderID, "kd"), kd);
 	glUniform1f(glGetUniformLocation(shaderID, "ks"), ks);
 	glUniform1f(glGetUniformLocation(shaderID, "q"), q);
-	glUniform3f(glGetUniformLocation(shaderID, "lightPos"), lightPos.x,lightPos.y,lightPos.z);
-	glUniform3f(glGetUniformLocation(shaderID, "camPos"), camPos.x,camPos.y,camPos.z);
+	glUniform3f(glGetUniformLocation(shaderID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
+	glUniform3f(glGetUniformLocation(shaderID, "camPos"), camPos.x, camPos.y, camPos.z);
 
 	//Ativando o primeiro buffer de textura da OpenGL
 	glActiveTexture(GL_TEXTURE0);
