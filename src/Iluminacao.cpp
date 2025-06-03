@@ -129,8 +129,10 @@ int main()
 	glUniform1i(glGetUniformLocation(shader.ID, "texBuffer"), 0);
 	glEnable(GL_DEPTH_TEST);
 
-	shader.setVec3("Ka", mat.Ka.x, mat.Ka.y, mat.Ka.z);
-	shader.setVec3("Ks", mat.Ks.x, mat.Ks.y, mat.Ks.z);
+	//Propriedades da superfície
+	shader.setVec3("ka", mat.Ka.x, mat.Ka.y, mat.Ka.z);
+	shader.setVec3("ks", mat.Ks.x, mat.Ks.y, mat.Ks.z);
+	shader.setFloat("kd", 0.5);
 	shader.setFloat("q", mat.Ns);
 
 	//Propriedades da fonte de luz
