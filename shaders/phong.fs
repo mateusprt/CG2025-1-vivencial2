@@ -21,7 +21,6 @@ uniform sampler2D texBuffer;
 
 void main()
 {
-
     //Coeficiente luz ambiente
     vec3 ambient = ka * lightColor;
 

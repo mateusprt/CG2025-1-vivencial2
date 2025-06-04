@@ -21,13 +21,12 @@ FetchContent_MakeAvailable(glfw)
 # Adiciona as pastas de cabeçalhos
 include_directories(${CMAKE_SOURCE_DIR}/include)
 include_directories(${CMAKE_SOURCE_DIR}/include/glad)
-include_directories(${CMAKE_SOURCE_DIR}/common)
-include_directories(${CMAKE_SOURCE_DIR}/common/shader)
+include_directories(${CMAKE_SOURCE_DIR}/Common)
+include_directories(${CMAKE_SOURCE_DIR}/Common/shader)
 
 # Lista de exercícios (por enquanto só tem o HelloTriangle)
 set(EXERCISES
-    #main
-    #SpherePhong
+    vivencial-2
     Iluminacao
 )
 
@@ -41,5 +40,11 @@ foreach(EXERCISE ${EXERCISES})
       Common/glad.c
       Common/Shader.cpp 
       include/stb_image/stb_image.cpp)
-    target_link_libraries(${EXERCISE} glfw opengl32)
+
+    if(WIN32)
+      target_link_libraries(${EXERCISE} glfw opengl32)
+    elseif(UNIX)
+      find_package(OpenGL REQUIRED)
+      target_link_libraries(${EXERCISE} glfw ${OPENGL_gl_LIBRARY})
+    endif()
 endforeach()
