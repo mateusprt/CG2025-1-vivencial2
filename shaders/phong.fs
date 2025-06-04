@@ -24,12 +24,16 @@ void main()
     //Coeficiente luz ambiente
     vec3 ambient = ka * lightColor;
 
+    // atenuação
+    float distance = length(lightPos - fragPos);
+    float attenuation = 1.0 / (1.0 + 0.22 * distance + 0.20 * distance * distance);
+
     //Coeficiente reflexão difusa
     vec3 diffuse;
     vec3 N = normalize(scaledNormal);
     vec3 L = normalize(lightPos - fragPos);
     float diff = max(dot(N,L),0.0);
-    diffuse = kd * diff * lightColor;
+    diffuse = kd * diff * lightColor * attenuation;
 
     //Coeficiente reflexão especular
     vec3 specular;
