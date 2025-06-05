@@ -21,21 +21,21 @@ uniform sampler2D texBuffer;
 
 void main()
 {
-    //Coeficiente luz ambiente
+    // Coeficiente luz ambiente
     vec3 ambient = ka * lightColor;
 
-    // atenuação
+    // Atenuação
     float distance = length(lightPos - fragPos);
     float attenuation = 1.0 / (1.0 + 0.22 * distance + 0.20 * distance * distance);
 
-    //Coeficiente reflexão difusa
+    // Coeficiente reflexão difusa
     vec3 diffuse;
     vec3 N = normalize(scaledNormal);
     vec3 L = normalize(lightPos - fragPos);
     float diff = max(dot(N,L),0.0);
     diffuse = kd * diff * lightColor * attenuation;
 
-    //Coeficiente reflexão especular
+    // Coeficiente reflexão especular
     vec3 specular;
     vec3 R = normalize(reflect(-L,N));
     vec3 V = normalize(cameraPos - fragPos);

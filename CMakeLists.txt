@@ -26,8 +26,7 @@ include_directories(${CMAKE_SOURCE_DIR}/Common/shader)
 
 # Lista de exercícios (por enquanto só tem o HelloTriangle)
 set(EXERCISES
-    vivencial-2
-    Iluminacao
+    main
 )
 
 add_compile_options(-Wno-pragmas)
